@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image Galary</title>
+  <!-- HTML -->
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+  <link href="path/to/lightbox.css" rel="stylesheet" />
+  <style>
+    body {
+      max-width: 500px;
+
+    }
+
+    section ul {
+      display: flex;
+      left: 1px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+
+    section {
+      margin: 0 auto;
+    }
+
+    section ul li {
+      list-style: none;
+      padding: 3px 6px;
+      background-color: #E0E0E0;
+      display: inline-block;
+      margin: 0 auto;
+      font-size: 9pt;
+      left: 1px;
+      font-family: 'Righteous', cursive;
+    }
+
+    section ul li.active {
+      background-color: #00BFEA;
+      color: white;
+
+    }
+
+    .product {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .product .itemBox {
+      margin: 2px;
+      height: 115px;
+      width: 115px;
+      max-height: 160px;
+      max-width: 160px;
+    }
+
+    .product .itemBox::active {
+      height: 100%;
+      width: 100%;
+      top: 0px;
+      left: 0px;
+      transition: all .5s;
+    }
+
+    .product .itemBox img {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <ul>
+      <li class="list active" data-filter="all">All</li>
+      <li class="list" data-filter="mobile">Mobile</li>
+      <li class="list" data-filter="camera">Camera</li>
+      <li class="list" data-filter="watch">Watch</li>
+      <li class="list" data-filter="shoe">Shoe</li>
+      <li class="list" data-filter="headphone">Headphone</li>
+    </ul>
+  </section>
+  <div class="product">
+    <div class="itemBox mobile">
+      <a href="mobile1.html" data-lightbox="roadtrip" > <img src="mobile1.jpg" alt=""></a>
+    </div>
+    <div class="itemBox camera">
+      <a href="camera1.jpg" l> <img src="camera1.jpg" alt=""> </a></div>
+    <div class="itemBox watch">
+      <a href="watch1.jpg" l> <img src="watch1.jpg" alt=""> </a></div>
+    <div class="itemBox shoe">
+      <a href="shoe1.jpg" l> <img src="shoe1.jpg" alt=""> </a></div>
+    <div class="itemBox headphone">
+      <a href="headphone1.jpg" l><img src="headphone1.jpg" alt=""></a> </div>
+    <div class="itemBox mobile">
+      <a href="mobile2.jpg" l><img src="mobile2.jpg" alt=""></a> </div>
+    <div class="itemBox camera">
+      <a href="camera2.jpg" l><img src="camera2.jpg" alt="">
+      </a></div>
+    <div class="itemBox watch">
+      <a href="watch2.jpg"><img src="watch2.jpg" alt=""></a>
+    </div>
+    <div class="itemBox shoe">
+      <a href="shoe2.jpg"> <img src="shoe2.jpg" alt="">
+      </a></div>
+    <div class="itemBox headphone">
+      <a href="headphone2.jpg"> <img src="headphone2.jpg" alt="">
+      </a></div>
+    <div class="itemBox mobile">
+      <a href="mobile3.jpg"> <img src="mobile3.jpg" alt="">
+      </a> </div>
+    <div class="itemBox camera">
+      <a href="camera3.jpg"> <img src="camera3.jpg" alt="">
+      </a> </div>
+    <div class="itemBox watch">
+      <a href="watch3.jpg"> <img src="watch3.jpg" alt="">
+      </a> </div>
+    <div class="itemBox shoe">
+      <a href="shoe3.jpg"> <img src="shoe3.jpg" alt="">
+      </a> </div>
+    <div class="itemBox headphone">
+      <a href="headphone3.jpg"> <img src="headphone3.jpg" alt="">
+      </a> </div>
+    <div class="itemBox mobile">
+      <a href="mobile4.jpg"> <img src="mobile4.jpg" alt="">
+      </a> </div>
+    <div class="itemBox mobile">
+      <a href="mobile5.jpg"> <img src="mobile5.jpg" alt="">
+      </a> </div>
+    <div class="itemBox watch">
+      <a href="watch4.jpg"> <img src="watch4.jpg" alt="">
+      </a> </div>
+    <div class="itemBox shoe">
+      <a href="shoe4.jpg"> <img src="shoe4.jpg" alt="">
+      </a> </div>
+    <div class="itemBox headphone">
+      <a href="headphone4.jpg"> <img src="headphone4.jpg" alt="">
+      </a> </div>
+  </div>
+  <script src="path/to/lightbox.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+      $('.list').click(function() {
+        const value = $(this).attr('data-filter');
+        if (value == 'all') {
+          $('.itemBox').show('1000');
+        }
+        else {
+          $('.itemBox').not('.' + value).hide('1000');
+          $('.itemBox').filter('.' + value).show('1000');
+        }
+      });
+      $('.list').click(function() {
+        $(this).addClass('active').siblings().removeClass('active');
+      });
+    });
+  </script>
+  <script src="main.js"></script>
+</body>
+
+</html>

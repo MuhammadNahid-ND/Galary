@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style>
+    .form {
+      align-items: center;
+    }
+
+    .form #name {
+      position: relative;
+      border-radius: 9px;
+      height: 30px;
+      padding-left: 20px;
+      margin: 0 auto;
+      border: .6px solid #42445A;
+    }
+
+    .form #body {
+      border-radius: 9px;
+      border: .6px solid #42445A;
+      position: relative;
+      width: 60%;
+      height: 100px;
+      padding-top: 20px;
+      padding-left: 20px;
+      margin: 10px auto;
+
+    }
+
+    .send {
+      background: linear-gradient(45deg, #1EFFFE, #AA1EFF, #FF0C90);
+      color: white;
+      width: 150px;
+      height: 45px;
+      border-radius: 9px;
+      border: none;
+      outline: none;
+      transition: all 1s;
+    }
+
+    .send:hover {
+      background: linear-gradient(45deg, #FF0C90, #AA1EFF, #1EFFFE);
+    }
+
+    .comment .text {
+      width: 95%;
+      border: none;
+      margin: 9px auto;
+      border-radius: 9px;
+      padding-left: 20px;
+      background-image: url(images-1.jpeg);
+      background-size: cover;
+    }
+
+    .comment .text p {
+      font-size: 9pt;
+      color: white;
+      padding-bottom: 10px;
+    }
+
+    .comment .text h4 {
+      font-size: 10pt;
+      color: white;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form">
+    <input type="text" placeholder="Your Name" name="" id="name">
+    <textarea type="text" placeholder="Write Your Comment" name="" id="body" value="" />
+    <button class="send">SEND</button>
+    </div>
+<div class="comment">
+<!--  <div class="text">
+    <h4>Nahid Hassan</h4>
+    <p>This is a comment</p>
+  </div>
+  <div class="text">
+    <h4>Nahid Mustakim</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam in qui accusantium id officia, excepturi atque repudiandae. Consequatur ad, perspiciatis.</p>
+  </div>-->
+  
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+  function render(data) {
+    var html = "<div class='text'><h4>" +data.name+"</h4><p>"+data.body+"</p></div>"
+    $('.comment').append(html);
+  }
+  $(document).ready(function() {
+    var coment = [];
+    if(!localStorage.comentData){
+      localStorage.comentData=[];
+    }
+    else{
+   coment=JSON.parse(localStorage.comentData);
+    }
+    for (var i = 0; i < coment.length; i++) {
+      render(coment[i]);
+    }
+    $('.send').click(function() {
+      var addObj = {
+        'name': $('#name').val(),
+        'body': $('#body').val(),
+
+      }
+      console.log(addObj);
+      coment.push(addObj);
+      localStorage.comentData=JSON.stringify(coment);
+      render(addObj);
+      $('#name').val(''),
+     $('#body').val(''),
+    });
+
+  });
+</script>
+</body>
+
+</html>
